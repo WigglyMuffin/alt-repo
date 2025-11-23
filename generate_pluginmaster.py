@@ -27,15 +27,15 @@ class Config:
         base_url = "https://github.com/WigglyMuffin/DalamudPlugins/raw/{branch}/plugins/{plugin_name}"
 
         repository_list = {
-            "Questionable": "https://github.com/WigglyMuffin/Questionable",
-            "Influx": "https://github.com/WigglyMuffin/Influx",
+            # "Questionable": "https://github.com/WigglyMuffin/Questionable",
+            # "Influx": "https://github.com/WigglyMuffin/Influx",
         }
 
         plugin_aliases = {
             "QuestionablePlus": {
                 "source": "Questionable",
                 "source_repo": "https://github.com/WigglyMuffin/Questionable",
-                "output_file": "repo.json",
+                "output_file": "pluginmaster.json",
                 "name_suffix": " Plus"
             }
         }
@@ -542,31 +542,10 @@ class PluginMasterGenerator:
             self.external_manager.download_external_plugins()
 
         print("Collecting plugin manifests...")
-        manifests = self._collect_manifests_with_priority()
-
-        for manifest in manifests:
-            self.processor.add_download_links(manifest)
-
-        print("Updating download counts...")
-        self.download_updater.update_download_counts(manifests)
-    
-        for manifest in manifests:
-            plugin_name = manifest.get("InternalName")
-            if manifest.get("DownloadCount", 0) == 0 and plugin_name in self.existing_download_counts:
-                manifest["DownloadCount"] = self.existing_download_counts[plugin_name]
-                print(f"Using cached download count for {plugin_name}: {manifest['DownloadCount']}")
-
-        self._update_last_modified(manifests)
-
-        manifests = [self.processor.trim_manifest(m) for m in manifests]
-
-        print("Writing main plugin master file...")
-        self._write_plugin_master(manifests)
-
-        print("Generating alias plugin master files...")
+        print("Generating alias plugin master files (QuestionablePlus only)...")
         self._generate_alias_files()
 
-        print(f"Generated plugin master with {len(manifests)} plugins")
+        print("Generation complete - only QuestionablePlus alias generated")
 
     def _generate_alias_files(self) -> None:
         """Generate separate pluginmaster files for aliases."""
