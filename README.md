@@ -5,12 +5,13 @@
 ---
 
 ### Questionable
-- **Author**: Liza Carvelli, WigglyMuffin
-- **Description**: A tiny quest helper plugin that automates quest completion where possible
+- **Author**: WigglyMuffin, CryoTechnic
+- **Description**: Originally created by Liza Carvelli, now maintained and improved by WigglyMuffin and CryoTechnic. A tiny little quest helper plugin that automates quests where possible. Uses navmesh to automatically walk to all quest waypoints, and tries to automatically complete all steps along the way.
 - **Features**: 
   - Automatic navigation using navmesh
-  - Automated quest step completion (excluding dungeons, single player duties, and combat)
+  - Automated quest step completion
   - MSQ and quest automation support
+- **Note**: Not all quests are supported, check Discord for support.
 - **Required Dependencies**: [vnavmesh](https://github.com/awgil/ffxiv_navmesh/), [Lifestream](https://github.com/NightmareXIV/Lifestream), [TextAdvance](https://github.com/NightmareXIV/TextAdvance)
 - **Repository**: [Questionable](https://github.com/WigglyMuffin/Questionable)
 
