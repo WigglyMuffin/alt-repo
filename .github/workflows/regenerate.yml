@@ -17,13 +17,13 @@ jobs:
     name: Regenerate PluginMaster
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Generate PluginMaster
         run: python generate_pluginmaster.py
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         with:
           author_name: GitHub Action
           author_email: github-actions[bot]@users.noreply.github.com
